@@ -35,39 +35,57 @@ This demo project is finished but I keep developing the game presented here.**
   [SoldierController](Scripts/SoldierController.cs)
   
   <p>
-    Explanation
+   UnitSelection retrieves UnitController from selected soldier and sets it active.
+   Active UnitControllers hold list of soldiers in the unit. They listen to mouse clicks,
+   calculate and convey new relative positions to SoldierControllers.
   </p>
 </details>
 
 #### Combat mechanics ####
 <details>
+ 
  [Soldier](Scripts/Soldier.cs)
- [Soldier](Scripts/Soldier.cs)
- [Soldier](Scripts/Soldier.cs)
+ [Swordmen](Scripts/Swordmen.cs)
+ [UnitController](Scripts/UnitController.cs)
+ 
   <p>
-    Explanation
+    Combat is done solely in Soldier scripts. A Soldier scans the immediate surroundings
+    and inflicts damage to the nearby enemies. Soldiers use stats contained in Swordmen
+    but modular design allows variety of soldier types. Upon death Soldier messages UnitController.
+    UnitController has safe way to remove Soldier from it's list without causing concurrent modification error.
   </p> 
 </details>
 
 #### Enemy movement ####
 <details>
-  [Source code](Scripts)
+ 
+  [AI](Scripts/AI.cs)
+  [AIController](Scripts/AIController.cs)
+ 
   <p>
-    Explanation
+    Previous design allowed enemy unit/s to wander blindly between two(or more) waypoints in 15s intervals, 
+   but this design separates movement from movement logic allowing   reactivity. 
+   Alas, AI was never implemented. I'm going to implement it in final game.
   </p> 
 </details>
 
 #### Animations ####
 <details>
-  [Source code](Scripts)
+ 
+  [CharacterAnimator](Scripts/CharacterAnimator.cs)
+  
   <p>
-    Explanation
+    Facilitates several attack animations but only one attack and one parry animation were animated. 
+    Uses blend tree to blend between idle and walk animations using character speed. 
+    The animator was designed inheritance and subclasses of soldiers in mind.
   </p> 
 </details>
 
 #### Battle configuration ####
 <details>
-  [Source code](Scripts)
+ 
+  [SelectedUnits](Scripts/SelectedUnits.cs)
+
   <p>
     Explanation
   </p> 
@@ -75,7 +93,9 @@ This demo project is finished but I keep developing the game presented here.**
 
 #### Simple GUI ####
 <details>
-  [Source code](Scripts)
+ 
+  [ColorButtons](Scripts/ColorButtons.cs)
+  <img src="" width="961" height="502" />
   <p>
     Explanation
   </p> 
