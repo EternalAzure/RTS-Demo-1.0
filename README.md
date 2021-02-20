@@ -21,9 +21,9 @@ This demo project is finished but I keep developing the game presented here.**
   [CameraController](Scripts/CameraController.cs)
  
   <p>
-    The camera pivots around center of the battle arena always facing towards the center.</br>
-    The camera is moved by clicking anywhere on screen and dragging move around. Movement </br> 
-    is limited to 180 degrees on one drag.
+    The camera pivots around center of the battle arena always facing towards the center. </br>
+    The camera is moved by clicking anywhere on the screen and dragging move around. </br>
+    Movement is limited to 180 degrees on one drag.
   </p> 
 </details>
 
@@ -35,8 +35,8 @@ This demo project is finished but I keep developing the game presented here.**
   [SoldierController](Scripts/SoldierController.cs)
   
   <p>
-   UnitSelection retrieves UnitController from selected soldier and sets it active.
-   Active UnitControllers hold list of soldiers in the unit. They listen to mouse clicks,
+   UnitSelection retrieves UnitController from a selected soldier and sets it active. </br>
+   Active UnitControllers hold list of soldiers in the unit. They listen to mouse clicks, </br>
    calculate and convey new relative positions to SoldierControllers.
   </p>
 </details>
@@ -49,9 +49,9 @@ This demo project is finished but I keep developing the game presented here.**
  [UnitController](Scripts/UnitController.cs)
  
   <p>
-    Combat is done solely in Soldier scripts. A Soldier scans the immediate surroundings
-    and inflicts damage to the nearby enemies. Soldiers use stats contained in Swordmen
-    but modular design allows variety of soldier types. Upon death Soldier messages UnitController.
+    Combat is done solely in Soldier script. A Soldier scans the immediate surroundings </br>
+    and inflicts damage to the nearby enemies. Soldiers use stats contained in Swordmen </br>
+    but modular design allows variety of soldier types. Upon death Soldier messages UnitController. </br>
     UnitController has safe way to remove Soldier from it's list without causing concurrent modification error.
   </p> 
 </details>
@@ -63,8 +63,8 @@ This demo project is finished but I keep developing the game presented here.**
   [AIController](Scripts/AIController.cs)
  
   <p>
-    Previous design allowed enemy unit/s to wander blindly between two(or more) waypoints in 15s intervals, 
-   but this design separates movement from movement logic allowing   reactivity. 
+    Previous design allowed enemy unit to wander blindly between multiple waypoints in 15s intervals, 
+   but this design separates movement from movement logic allowing reactivity. 
    Alas, AI was never implemented. I'm going to implement it in final game.
   </p> 
 </details>
@@ -95,15 +95,20 @@ This demo project is finished but I keep developing the game presented here.**
 <details>
  
   [ColorButtons](Scripts/ColorButtons.cs)
-  <img src="" width="961" height="502" />
+  [ChangeScene](Scripts/ChangeScene.cs)
+  
+  <img src="https://github.com/EternalAzure/RTS-Demo-1.0/blob/EternalAzure-patch-1/RTS%20GUI%20kuva%2001.png" width="200" height="180" /> &nbsp;&nbsp;
+  <img src="https://github.com/EternalAzure/RTS-Demo-1.0/blob/EternalAzure-patch-1/RTS%20GUI%20kuva%2002.png" width="200" height="180" />
   <p>
-    Explanation
+    Player can choose number of soldiers in unit from 0 to 9. GUI only supports one unit 
+    for player and AI. GUI supports change in multiple stats including hp, damage or attack speed.
+    Pictures are out dated and are going to be updated. 
   </p> 
 </details>
 
 #### Spawner ####
 <details>
-  [Source code](Scripts)
+  [Spawner](Scripts(Spawner.cs)
   <p>
     Explanation
   </p> 
