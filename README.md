@@ -76,7 +76,8 @@ This demo project is finished but I keep developing the game presented here.**
 [SelectedUnits](Scripts/SelectedUnits.cs)
 
   <p>
-    Explanation
+    Player can choose number of soldiers in unit from 0 to 9. GUI only supports one unit 
+    for player and AI. Furthermore player can adjust starting hp on both teams.
   </p> 
   
 #### Simple GUI ####
@@ -87,14 +88,14 @@ This demo project is finished but I keep developing the game presented here.**
   <img src="https://github.com/EternalAzure/RTS-Demo-1.0/blob/main/RTS%20GUI%20kuva%2001.png" width="200" height="180" /> &nbsp;&nbsp;
   <img src="https://github.com/EternalAzure/RTS-Demo-1.0/blob/main/RTS%20GUI%20kuva%2002.png" width="200" height="180" />
   <p>
-    Player can choose number of soldiers in unit from 0 to 9. GUI only supports one unit 
-    for player and AI. GUI supports change in multiple stats including hp, damage or attack speed.
-    Pictures are out dated and are going to be updated. 
+    Has restart button to reset ongoing battle using set stats. Has menu button to get to battle configuration. </br>
+    In battle configuration grids are dynamically colored using ColorButtons to signal amount of soldiers selected to fight.
   </p> 
 
 #### Spawner ####
 
   [Spawner](Scripts/Spawner.cs)
   <p>
-    Explanation
+    Used to facilitate spawning unlimited amount of units with unlimited amount of soldiers each, </br>
+    but got simplified due to scaling down of project. Builds units using prefabricated gameobject 'soldier'.
   </p> 
