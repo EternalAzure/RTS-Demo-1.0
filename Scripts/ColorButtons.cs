@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class ColorButtons : MonoBehaviour
 {
     [SerializeField] private GridLayoutGroup grid;
     [SerializeField] private Material red = null;
     [SerializeField] private Material blue = null;
-    [SerializeField] private GameObject scriptParent;
+    [SerializeField] private GameObject scriptParent; //Off SelectedUnits.cs
     private void Start()
     {
         scriptParent.GetComponent<SelectedUnits>().ColourBlue += ColourBlue;

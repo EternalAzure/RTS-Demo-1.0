@@ -11,6 +11,7 @@ public class SelectedUnits : MonoBehaviour
     [SerializeField] private Swordmen statsB;
     private void Update()
     {
+        //For debugging
         if (Input.GetKeyDown(KeyCode.T))
         {
             int blue = PlayerPrefs.GetInt("blue", 9);

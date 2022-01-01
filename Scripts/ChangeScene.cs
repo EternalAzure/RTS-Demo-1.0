@@ -5,14 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-   public void Restart()
-    {
-        SceneManager.LoadScene(0);
-    }
-
     public void Menu()
     {
         SceneManager.LoadScene(1);
     }
 
+    public void BatteConfig()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void Quit()
+    {
+        Debug.Log("QUIT!");
+        Application.Quit();
+    }
 }

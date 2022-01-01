@@ -57,6 +57,7 @@ public class Soldier : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("TriggerEnter");
         if (other.gameObject.tag.Equals(enemyTag))
             enemiesInRange.Add(other.gameObject);
     }
@@ -70,12 +71,12 @@ public class Soldier : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stats.range);
 
-    }
+    }*/
     public void TakeDamage(int damage)
     {
         int hitChance = Random.Range(1, 10);
