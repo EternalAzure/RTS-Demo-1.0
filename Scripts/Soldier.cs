@@ -57,7 +57,6 @@ public class Soldier : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TriggerEnter");
         if (other.gameObject.tag.Equals(enemyTag))
             enemiesInRange.Add(other.gameObject);
     }

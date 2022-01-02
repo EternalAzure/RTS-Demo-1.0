@@ -16,6 +16,11 @@ public class AIController : MonoBehaviour, IUnitController
         StartCoroutine(RemoveDeadSoldiers());
     }
 
+    public void SetDestination(Vector3 newDestination)
+    {
+        destination = newDestination;
+    }
+
     public void Move()
     {
         if (soldiers.Count <= 0) return;
@@ -40,14 +45,16 @@ public class AIController : MonoBehaviour, IUnitController
         isIterating = false;
     }
 
-    public void SetSoldiers(List<Transform> soldiers)
-    {
-        this.soldiers = soldiers;
-    }
     public void OnDeath(Soldier s)
     {
         corpses.Add(s.transform);
     }
+
+    public void SetSoldiers(List<Transform> soldiers)
+    {
+        this.soldiers = soldiers;
+    }
+    
     IEnumerator RemoveDeadSoldiers()
     {
         while (true)

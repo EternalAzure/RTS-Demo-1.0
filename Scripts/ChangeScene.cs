@@ -7,17 +7,17 @@ public class ChangeScene : MonoBehaviour
 {
     public void Menu()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 
     public void BatteConfig()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 
     public void Quit()
