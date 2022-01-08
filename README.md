@@ -5,15 +5,13 @@
 This demo project is finished but I keep developing the game presented here.**
 
 ### Game Features ###
-  * Click and drag camera
-  * Point and click unitcontroller
+  * Combat camera
+  * Click and drag unitcontroller
   * Combat mechanics
-  * Enemy movement
   * Animations
-  * Battle configuration
-  * Simple GUI
   * Spawner
   
+Explanations out of date!
 ----
 #### Click and drag camera ####
 
