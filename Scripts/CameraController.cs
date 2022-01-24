@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        //cameraTransform = transform.GetChild(0);
+        Time.timeScale = 1;
         movementSpeed = normalSpeed;
         newPosition = transform.position;
         newRotation = transform.rotation;

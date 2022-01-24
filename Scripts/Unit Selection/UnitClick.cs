@@ -25,16 +25,18 @@ public class UnitClick : MonoBehaviour
             Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectable))
             {
+                Transform clickedFighter = hit.collider.transform;
+
                 // if we hit selectable object
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     // shift click
-                    UnitSelections.Instance.ShiftClickSelect(hit.collider.gameObject);
+                    UnitSelections.Instance.ShiftClickSelect(clickedFighter);
                 }
                 else
                 {
                     // normal click
-                    UnitSelections.Instance.ClickSelect(hit.collider.gameObject);
+                    UnitSelections.Instance.ClickSelect(clickedFighter);
                 }
             }
             else

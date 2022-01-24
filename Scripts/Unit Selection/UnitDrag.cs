@@ -10,11 +10,17 @@ public class UnitDrag : MonoBehaviour
     Rect selectionBox; // Logical
     Vector2 P1;
     Vector2 P2;
+    Adversary playerFighters;
+    PlayerController[] controllers;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject multiSpawnerObject = GameObject.FindGameObjectWithTag("MultiSpawner");
+        controllers = multiSpawnerObject.GetComponents<PlayerController>();
+
         myCamera = Camera.main;
+        playerFighters = GameObject.FindGameObjectWithTag("MultiSpawner").GetComponent<MultiSpawner>();
         P1 = Vector2.zero;
         P2 = Vector2.zero;
         DrawVisual();
@@ -37,7 +43,6 @@ public class UnitDrag : MonoBehaviour
             DrawSelection();
             SelectUnits(); // This is not misplaced
         }
-
         // When realeased
         if (Input.GetMouseButtonUp(0))
         {
@@ -85,7 +90,6 @@ public class UnitDrag : MonoBehaviour
         else
         {
             // Dragging up
-            //SelectUnits(); what teh fy
             selectionBox.yMin = P1.y;
             selectionBox.yMax = Input.mousePosition.y;
         }
@@ -93,13 +97,13 @@ public class UnitDrag : MonoBehaviour
 
     void SelectUnits()
     {
-        foreach (var unit in UnitSelections.Instance.unitList)
+        foreach (var unit in playerFighters.GetFighters())
         {
             // if unit is within bounds of selection rect
             if (selectionBox.Contains(myCamera.WorldToScreenPoint(unit.transform.position)))
             {
                 // if unit is on right LayerMask
-                if (selectable.Contains(unit.layer)) //unit.layer == 6
+                if (selectable.Contains(unit.gameObject.layer)) //unit.layer == 6
                 {
                     UnitSelections.Instance.DragSelect(unit);
                 }

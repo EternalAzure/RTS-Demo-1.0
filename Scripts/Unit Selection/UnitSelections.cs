@@ -5,10 +5,11 @@ using UnityEngine;
 public class UnitSelections : MonoBehaviour
 {
     // Fighters will add themselves via Unit script
-    public List<GameObject> unitList = new List<GameObject>(); 
-    public List<GameObject> unitsSelected = new List<GameObject>();
+    //public List<GameObject> unitList = new List<GameObject>(); 
+    public List<PlayerController> unitsSelected = new List<PlayerController>();
     private static UnitSelections _instance;
     public static UnitSelections Instance {get {return _instance;}}
+    public PlayerController[] controllers;
 
     void Awake()
     {
@@ -22,33 +23,46 @@ public class UnitSelections : MonoBehaviour
         }
     }
 
-    public void ClickSelect(GameObject unitToAdd)
+    void Start()
     {
-        DeselectAll();
-        unitsSelected.Add(unitToAdd);
-        AllowMovement(unitToAdd, true);
+        GameObject multiSpawnerObject = GameObject.FindGameObjectWithTag("MultiSpawner");
+        controllers = multiSpawnerObject.GetComponents<PlayerController>();
     }
 
-    public void ShiftClickSelect(GameObject unitToAdd)
+    public void ClickSelect(Transform fighter)
     {
-        if (!unitsSelected.Contains(unitToAdd))
+        DeselectAll();
+        PlayerController controller = FindController(fighter, controllers);
+        if (controller == null) return;
+
+        unitsSelected.Add(controller);
+        AllowMovement(controller, true);
+    }
+
+    public void ShiftClickSelect(Transform fighter)
+    {
+        PlayerController controller = FindController(fighter, controllers);
+        if (!unitsSelected.Contains(controller))
         {
-            unitsSelected.Add(unitToAdd);
-            AllowMovement(unitToAdd, true);
+            unitsSelected.Add(controller);
+            AllowMovement(controller, true);
         }
         else
         {
-            unitsSelected.Remove(unitToAdd);
-            AllowMovement(unitToAdd, false);
+            unitsSelected.Remove(controller);
+            AllowMovement(controller, false);
         }
     }
 
-    public void DragSelect(GameObject unitToAdd)
+    public void DragSelect(Transform fighter)
     {
-        if (!unitsSelected.Contains(unitToAdd))
+        PlayerController controller = FindController(fighter, controllers);
+        if (controller == null) return;
+
+        if (!unitsSelected.Contains(controller))
         {
-            unitsSelected.Add(unitToAdd);
-            AllowMovement(unitToAdd, true);
+            unitsSelected.Add(controller);
+            AllowMovement(controller, true);
         }
     }
 
@@ -61,24 +75,24 @@ public class UnitSelections : MonoBehaviour
         unitsSelected.Clear();
     }
 
-    public void Deselect(GameObject unitToDeselect)
+    public void Deselect(Transform fighter)
     {
-        unitsSelected.Remove(unitToDeselect);
-        AllowMovement(unitToDeselect, false);
+        PlayerController controller = FindController(fighter, controllers);
+        unitsSelected.Remove(controller);
+        AllowMovement(controller, false);
     }
 
-    private void AllowMovement(GameObject unit, bool isAllowed)
+    private void AllowMovement(PlayerController unit, bool isAllowed)
     {
-        try
+        unit.selected = isAllowed;
+    }
+
+    PlayerController FindController(Transform selectedFighter, PlayerController[] controllers)
+    {
+        foreach (var controller in controllers)
         {
-            PlayerController p = (PlayerController) unit.GetComponent<MovementModule>().controller;
-            p.selected = isAllowed;
+            if (controller.RecogniseFighter(selectedFighter)) return controller;
         }
-        catch (MissingReferenceException)
-        {
-            // Unit has removed itself from unitList in Unit.OnDestroy
-            // No need for further actions
-            throw;
-        }
+        return null;
     }
 }
