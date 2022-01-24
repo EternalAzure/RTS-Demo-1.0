@@ -1,7 +1,8 @@
 # RTS-Demo-1.0
 <img src="https://github.com/EternalAzure/RTS-Demo-1.0/blob/main/RTS%20kuva.png" width="961" height="502" />
 
-**Play here: https://eternalazure-web-hosting.herokuapp.com/<br/>**
+**Play here: https://eternalazure-web-hosting.herokuapp.com/<br/>
+new: https://eternalazure-web-hosting.herokuapp.com/new**
 
 ### Game Features ###
   * Combat camera
